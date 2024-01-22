@@ -1,4 +1,4 @@
-**This template is originally created by dirtbikerxz and rzblue. The link to the original repository is https://github.com/dirtbikerxz/BaseTalonFXSwerve. Team 6729 is grateful to be able to use this template and customize it to fit their needs.**
+# **This template is originally created by dirtbikerxz and rzblue. The link to the original repository is https://github.com/dirtbikerxz/BaseTalonFXSwerve. Team 6729 is grateful to be able to use this template and customize it to fit their needs.**
 
 **<ins>Note:</ins> While this code intends to provide plug n play configs/tuning numbers for COTS Modules, there are several configs/tunes that are untested with the change to Phoenix 6. If this code is used for one of those untested modules, the module specific configs and tuning will most likely need to be edited.**
 
