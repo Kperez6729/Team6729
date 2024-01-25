@@ -156,7 +156,7 @@ public final class Constants {
         public static final int leftSide = 14;
         public static final int rightSide = 15;
         public static final double speed = 0.50;
-        public static final int storeNote = 20;
+        public static final int storeNote = 1;
     }
 
     /* Shooter motor IDs and power value */
