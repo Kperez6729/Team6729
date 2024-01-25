@@ -9,7 +9,7 @@ public class Intake extends SubsystemBase{
    public TalonSRX topRoller;
    public TalonSRX bottomRoller;
     public Intake(){
-        topRoller= new TalonSRX(Constants.Intake.topRoller);
+        topRoller = new TalonSRX(Constants.Intake.topRoller);
         bottomRoller = new TalonSRX(Constants.Intake.bottomRoller);
     }
     
