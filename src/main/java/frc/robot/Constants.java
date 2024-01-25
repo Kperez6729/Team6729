@@ -148,14 +148,14 @@ public final class Constants {
     public static final class Intake {
         public static final int topRoller = 18;
         public static final int bottomRoller = 19;
-        public static final int speed = 0.65;
+        public static final double speed = 0.65;
     }
 
     /* Indexer motor IDs, breakbeam, and power value */
     public static final class Indexer {
         public static final int leftSide = 14;
         public static final int rightSide = 15;
-        public static final int speed = 0.50;
+        public static final double speed = 0.50;
         public static final int storeNote = 20;
     }
 
@@ -163,13 +163,13 @@ public final class Constants {
     public static final class Shooter {
         public static final int leftWheel = 17;
         public static final int rightWheel = 16;
-        public static final int speed = 0.75;
+        public static final double speed = 0.75;
     }
 
     /* Climber motor IDs and power value */
     public static final class Climber {
         public static final int leftArm = 21;
         public static final int rightArm = 22;
-        public static final int speed = 0.25;
+        public static final double speed = 0.25;
     }
 }
