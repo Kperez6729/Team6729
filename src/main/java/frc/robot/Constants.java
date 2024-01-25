@@ -171,5 +171,6 @@ public final class Constants {
         public static final int leftArm = 21;
         public static final int rightArm = 22;
         public static final double speed = 0.25;
+        public static final int armPosition = 2;
     }
 }
