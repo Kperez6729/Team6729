@@ -166,7 +166,7 @@ public final class Constants {
         public static final double speed = 0.75;
     }
 
-    /* Climber motor IDs and power value */
+    /* Climber motor IDs, throughbore encoder, and power value */
     public static final class Climber {
         public static final int leftArm = 21;
         public static final int rightArm = 22;
