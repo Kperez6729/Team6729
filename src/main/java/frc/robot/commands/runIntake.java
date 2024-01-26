@@ -14,7 +14,7 @@ public class runIntake extends Command{
 
     public runIntake(BooleanSupplier a, BooleanSupplier b) {
         this.a = a;
-        this.b =b;
+        this.b = b;
 
 
     }
