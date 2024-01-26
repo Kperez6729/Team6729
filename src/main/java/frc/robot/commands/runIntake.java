@@ -5,6 +5,7 @@ import java.util.function.BooleanSupplier;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import  frc.robot.subsystems.Index;
 import  frc.robot.subsystems.Intake;
 public class runIntake extends Command{
@@ -20,12 +21,12 @@ public class runIntake extends Command{
     @Override
     public void execute() {
         if (a.getAsBoolean() &&  Index.storeNote.get()) {
-            Intake.topRoller.set(ControlMode.PercentOutput, 1);
-            Intake.bottomRoller.set(ControlMode.PercentOutput, 1);
+            Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
+            Intake.bottomRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
         }
         else if (b.getAsBoolean()){
-            Intake.topRoller.set(ControlMode.PercentOutput, -1);
-            Intake.bottomRoller.set(ControlMode.PercentOutput, -1);
+            Intake.topRoller.set(ControlMode.PercentOutput, -Constants.Intake.speed);
+            Intake.bottomRoller.set(ControlMode.PercentOutput, -Constants.Intake.speed);
         }
         else{
             Intake.topRoller.set(ControlMode.PercentOutput, 0);
