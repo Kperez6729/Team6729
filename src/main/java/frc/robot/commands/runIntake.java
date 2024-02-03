@@ -6,7 +6,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
-import  frc.robot.subsystems.Index;
+
 import  frc.robot.subsystems.Intake;
 public class runIntake extends Command{
     private BooleanSupplier a;
@@ -20,7 +20,7 @@ public class runIntake extends Command{
     }
     @Override
     public void execute() {
-        if (a.getAsBoolean() &&  Index.storeNote.get()) {
+        if (a.getAsBoolean() ) {
             Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
             Intake.bottomRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
         }
