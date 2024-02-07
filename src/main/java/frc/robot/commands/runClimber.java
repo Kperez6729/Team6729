@@ -11,7 +11,8 @@ import frc.robot.subsystems.Climber;
 public class runClimber extends Command{
     private BooleanSupplier a;
     private BooleanSupplier b;
-    public runClimber(BooleanSupplier a, BooleanSupplier b){
+    public runClimber(Climber c_Climber, BooleanSupplier a, BooleanSupplier b){
+        addRequirements(c_Climber);
         this.a = a;
         this.b = b;
     }
