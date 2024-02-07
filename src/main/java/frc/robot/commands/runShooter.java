@@ -12,7 +12,9 @@ import frc.robot.subsystems.Shooter;
 public class runShooter extends Command{
     private  BooleanSupplier a;
     private BooleanSupplier b;
-    public runShooter(BooleanSupplier a, BooleanSupplier b){
+    
+    public runShooter(Shooter s_Shooter, BooleanSupplier a, BooleanSupplier b){
+        addRequirements(s_Shooter);
         this.a = a;
         this.b = b;
         

@@ -9,7 +9,8 @@ import frc.robot.subsystems.Index;
 public class runIndex extends Command{
     private BooleanSupplier a;
     private BooleanSupplier b;
-    public runIndex(BooleanSupplier a, BooleanSupplier b){
+    public runIndex(Index i_Index, BooleanSupplier a, BooleanSupplier b){
+        addRequirements(i_Index);
         this.a = a;
         this.b = b;
     }

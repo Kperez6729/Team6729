@@ -27,11 +27,20 @@ public class RobotContainer {
     private final int rotationAxis = XboxController.Axis.kRightX.value;
 
     /* Driver Buttons */
-    private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
-    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
-
+    private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kStart.value);
+    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kBack.value);
+    private final JoystickButton shoot = new JoystickButton(driver, XboxController.Button.kB.value);
+    private final JoystickButton inShooter = new JoystickButton(driver, XboxController.Button.kX.value);
+    private final JoystickButton upIndex = new JoystickButton(driver, XboxController.Button.kY.value);
+    private final JoystickButton downIndex = new JoystickButton(driver, XboxController.Button.kA.value);
+    private final JoystickButton outIntake = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
+    private final JoystickButton inIntake = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
+    private final Shooter s_Shooter = new Shooter();
+    private final Intake i_Intake = new Intake();
+    private final Index i_Index = new Index();
+    private final Climber c_Climber = new Climber();
 
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -45,6 +54,28 @@ public class RobotContainer {
                 () -> robotCentric.getAsBoolean()
             )
         );
+        s_Shooter.setDefaultCommand(
+            new runShooter(
+                s_Shooter,
+                () -> shoot.getAsBoolean(),
+                () -> inShooter.getAsBoolean()
+            )
+        );
+        i_Index.setDefaultCommand(
+            new runIndex(
+                i_Index,
+                () -> upIndex.getAsBoolean(),
+                () -> downIndex.getAsBoolean()
+            )
+        );
+        i_Intake.setDefaultCommand(
+            new runIntake(
+                i_Intake,
+                () -> inIntake.getAsBoolean(),
+                () -> outIntake.getAsBoolean()
+            )
+        );
+        
 
         // Configure the button bindings
         configureButtonBindings();

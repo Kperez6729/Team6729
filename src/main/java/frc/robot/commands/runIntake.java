@@ -12,7 +12,8 @@ public class runIntake extends Command{
     private BooleanSupplier a;
     private BooleanSupplier b;
 
-    public runIntake(BooleanSupplier a, BooleanSupplier b) {
+    public runIntake(Intake i_Intake, BooleanSupplier a, BooleanSupplier b) {
+        addRequirements(i_Intake);
         this.a = a;
         this.b = b;
 
