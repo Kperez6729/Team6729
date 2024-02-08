@@ -41,8 +41,8 @@ public class Swerve extends SubsystemBase {
                         translation.getX(),
                         translation.getY(),
                         rotation,
-                        // getHeading())
-                        getGyroYaw())
+                        getHeading())
+                        // getGyroYaw())
                         : new ChassisSpeeds(
                                 translation.getX(),
                                 translation.getY(),
@@ -63,15 +63,13 @@ public class Swerve extends SubsystemBase {
         }
     }
 
-    /*
-     * public SwerveModuleState[] getModuleStates() {
-     * SwerveModuleState[] states = new SwerveModuleState[4];
-     * for (SwerveModule mod : mSwerveMods) {
-     * states[mod.moduleNumber] = mod.getState();
-     * }
-     * return states;
-     * }
-     */
+    public SwerveModuleState[] getModuleStates() {
+        SwerveModuleState[] states = new SwerveModuleState[4];
+        for (SwerveModule mod : mSwerveMods) {
+            states[mod.moduleNumber] = mod.getState();
+        }
+        return states;
+    }
 
     public SwerveModulePosition[] getModulePositions() {
         SwerveModulePosition[] positions = new SwerveModulePosition[4];
@@ -89,28 +87,22 @@ public class Swerve extends SubsystemBase {
         swerveOdometry.resetPosition(getGyroYaw(), getModulePositions(), pose);
     }
 
-    /*
-     * public Rotation2d getHeading() {
-     * return getPose().getRotation();
-     * }
-     */
+    public Rotation2d getHeading() {
+        return getPose().getRotation();
+    }
 
-    /*
-     * public void setHeading(Rotation2d heading) {
-     * swerveOdometry.resetPosition(getGyroYaw(), getModulePositions(),
-     * new Pose2d(getPose().getTranslation(), heading));
-     * }
-     */
+    public void setHeading(Rotation2d heading) {
+        swerveOdometry.resetPosition(getGyroYaw(), getModulePositions(),
+                new Pose2d(getPose().getTranslation(), heading));
+    }
 
-    /*
-     * public void zeroHeading() {
-     * swerveOdometry.resetPosition(getGyroYaw(), getModulePositions(),
-     * new Pose2d(getPose().getTranslation(), new Rotation2d()));
-     * }
-     */
+    public void zeroHeading() {
+        swerveOdometry.resetPosition(getGyroYaw(), getModulePositions(),
+                new Pose2d(getPose().getTranslation(), new Rotation2d()));
+    }
 
     public Rotation2d getGyroYaw() {
-        return (Rotation2d.fromDegrees((360 - gyro.getYaw())));
+        return (Rotation2d.fromDegrees(gyro.getYaw() + 180));
     }
 
     public void resetModulesToAbsolute() {

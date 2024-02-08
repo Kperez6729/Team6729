@@ -28,6 +28,8 @@ public class RobotContainer {
     private final int translationAxis = XboxController.Axis.kLeftY.value;
     private final int strafeAxis = XboxController.Axis.kLeftX.value;
     private final int rotationAxis = XboxController.Axis.kRightX.value;
+    private final int climberUp = XboxController.Axis.kLeftTrigger.value;
+    private final int climberDown = XboxController.Axis.kRightTrigger.value;
 
     /* Driver Buttons */
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kStart.value);
@@ -50,36 +52,31 @@ public class RobotContainer {
      */
     public RobotContainer() {
         s_Swerve.setDefaultCommand(
-            new TeleopSwerve(
-                s_Swerve, 
-                () -> -driver.getRawAxis(translationAxis), 
-                () -> -driver.getRawAxis(strafeAxis), 
-                () -> -driver.getRawAxis(rotationAxis), 
-                () -> robotCentric.getAsBoolean()
-            )
-        );
+                new TeleopSwerve(
+                        s_Swerve,
+                        () -> -driver.getRawAxis(translationAxis),
+                        () -> -driver.getRawAxis(strafeAxis),
+                        () -> -driver.getRawAxis(rotationAxis),
+                        () -> robotCentric.getAsBoolean()));
         s_Shooter.setDefaultCommand(
-            new runShooter(
-                s_Shooter,
-                () -> shoot.getAsBoolean(),
-                () -> inShooter.getAsBoolean()
-            )
-        );
+                new runShooter(
+                        s_Shooter,
+                        () -> shoot.getAsBoolean(),
+                        () -> inShooter.getAsBoolean()));
         i_Index.setDefaultCommand(
-            new runIndex(
-                i_Index,
-                () -> upIndex.getAsBoolean(),
-                () -> downIndex.getAsBoolean()
-            )
-        );
+                new runIndex(
+                        i_Index,
+                        () -> upIndex.getAsBoolean(),
+                        () -> downIndex.getAsBoolean()));
         i_Intake.setDefaultCommand(
-            new runIntake(
-                i_Intake,
-                () -> inIntake.getAsBoolean(),
-                () -> outIntake.getAsBoolean()
-            )
-        );
-        
+                new runIntake(
+                        i_Intake,
+                        () -> inIntake.getAsBoolean(),
+                        () -> outIntake.getAsBoolean()));
+        c_Climber.setDefaultCommand(
+                new runClimber(c_Climber,
+                        () -> driver.getRawAxis(climberUp),
+                        () -> driver.getRawAxis(climberDown)));
 
         // Configure the button bindings
         configureButtonBindings();
