@@ -6,9 +6,7 @@ package frc.robot.commands;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix6.controls.DutyCycleOut;
-
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.Constants;
 import frc.robot.subsystems.Index;
 import frc.robot.subsystems.Intake;
@@ -24,24 +22,30 @@ public class Shoot extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     Shooter.leftWheel.setControl(new DutyCycleOut(Constants.Shooter.speed));
     Shooter.rightWheel.setControl(new DutyCycleOut(-Constants.Shooter.speed));
-    Commands.waitSeconds(0.5);
     Index.leftSide.set(Constants.Indexer.speed);
     Index.rightSide.set(-Constants.Indexer.speed);
     Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
     Intake.bottomRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
-
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    Shooter.leftWheel.setControl(new DutyCycleOut(0));
+    Shooter.rightWheel.setControl(new DutyCycleOut(0));
+    Index.leftSide.set(0);
+    Index.rightSide.set(0);
+    Intake.topRoller.set(ControlMode.PercentOutput, 0);
+    Intake.bottomRoller.set(ControlMode.PercentOutput, 0);
+  }
 
   // Returns true when the command should end.
   @Override

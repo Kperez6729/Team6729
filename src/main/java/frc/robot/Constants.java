@@ -170,12 +170,12 @@ public final class Constants {
     public static final class Shooter {
         public static final int leftWheel = 19;
         public static final int rightWheel = 18;
-        public static final double speed = 1.0;
+        public static final double speed = .40;
     }
 
     /* Climber motor IDs, throughbore encoder, and power value */
     public static final class Climber {
-        public static final int leftArm = 21;
+        public static final int leftArm = 24;
         public static final int rightArm = 22;
         public static final double speed = 0.25;
         public static final int armPosition1 = 0;

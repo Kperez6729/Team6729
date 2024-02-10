@@ -35,7 +35,8 @@ public class RobotContainer {
         private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kStart.value);
         private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kBack.value);
         private final JoystickButton shoot = new JoystickButton(driver, XboxController.Button.kB.value);
-        //private final JoystickButton inShooter = new JoystickButton(driver, XboxController.Button.kX.value);
+        // private final JoystickButton inShooter = new JoystickButton(driver,
+        // XboxController.Button.kX.value);
         private final JoystickButton upIndex = new JoystickButton(driver, XboxController.Button.kY.value);
         private final JoystickButton downIndex = new JoystickButton(driver, XboxController.Button.kA.value);
         private final JoystickButton outIntake = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
@@ -58,11 +59,15 @@ public class RobotContainer {
                                                 () -> -driver.getRawAxis(strafeAxis),
                                                 () -> -driver.getRawAxis(rotationAxis),
                                                 () -> robotCentric.getAsBoolean()));
-               /* s_Shooter.setDefaultCommand(
-                                new runShooter(
-                                                s_Shooter,
-                                                () -> shoot.getAsBoolean(),
-                                                () -> inShooter.getAsBoolean()));*/
+
+                /*
+                 * s_Shooter.setDefaultCommand(
+                 * new runShooter(
+                 * s_Shooter,
+                 * () -> shoot.getAsBoolean(),
+                 * () -> inShooter.getAsBoolean()));
+                 */
+
                 i_Index.setDefaultCommand(
                                 new runIndex(
                                                 i_Index,
@@ -93,6 +98,7 @@ public class RobotContainer {
         private void configureButtonBindings() {
                 /* Driver Buttons */
                 zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
+
                 shoot.whileTrue(new Shoot(s_Shooter, i_Index, i_Intake));
         }
 
