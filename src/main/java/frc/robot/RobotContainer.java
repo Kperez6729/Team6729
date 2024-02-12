@@ -34,11 +34,13 @@ public class RobotContainer {
         /* Driver Buttons */
         private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kStart.value);
         private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kBack.value);
-        private final JoystickButton shoot = new JoystickButton(driver, XboxController.Button.kB.value);
-        // private final JoystickButton inShooter = new JoystickButton(driver,
-        // XboxController.Button.kX.value);
-        private final JoystickButton upIndex = new JoystickButton(driver, XboxController.Button.kY.value);
-        private final JoystickButton downIndex = new JoystickButton(driver, XboxController.Button.kA.value);
+        private final JoystickButton shoot = new JoystickButton(driver, XboxController.Button.kY.value);
+        private final JoystickButton ampShoot = new JoystickButton(driver, XboxController.Button.kB.value);
+        private final JoystickButton sideShooter = new JoystickButton(driver, XboxController.Button.kX.value);
+        // private final JoystickButton upIndex = new JoystickButton(driver,
+        // XboxController.Button.kY.value);
+        // private final JoystickButton downIndex = new JoystickButton(driver,
+        // XboxController.Button.kA.value);
         private final JoystickButton outIntake = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
         private final JoystickButton inIntake = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
         /* Subsystems */
@@ -68,11 +70,13 @@ public class RobotContainer {
                  * () -> inShooter.getAsBoolean()));
                  */
 
-                i_Index.setDefaultCommand(
-                                new runIndex(
-                                                i_Index,
-                                                () -> upIndex.getAsBoolean(),
-                                                () -> downIndex.getAsBoolean()));
+                /*
+                 * i_Index.setDefaultCommand(
+                 * new runIndex(
+                 * i_Index,
+                 * () -> upIndex.getAsBoolean(),
+                 * () -> downIndex.getAsBoolean()));
+                 */
                 i_Intake.setDefaultCommand(
                                 new runIntake(
                                                 i_Intake,
@@ -100,6 +104,8 @@ public class RobotContainer {
                 zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
 
                 shoot.whileTrue(new Shoot(s_Shooter, i_Index, i_Intake));
+                sideShooter.whileTrue(new sideShoot(s_Shooter, i_Index, i_Intake));
+                ampShoot.whileTrue(new frc.robot.commands.ampShoot(s_Shooter, i_Index, i_Intake));
         }
 
         /**

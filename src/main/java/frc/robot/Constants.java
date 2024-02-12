@@ -155,14 +155,14 @@ public final class Constants {
     public static final class Intake {
         public static final int topRoller = 21;
         public static final int bottomRoller = 20;
-        public static final double speed = 0.65;
+        public static final double speed = 0.75;
     }
 
     /* Indexer motor IDs, breakbeam, and power value */
     public static final class Indexer {
         public static final int leftSide = 14;
         public static final int rightSide = 15;
-        public static final double speed = 0.50;
+        public static final double speed = 0.75;
         public static final int storeNote = 1; // https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/digital-inputs-software.html
     }
 
@@ -170,7 +170,9 @@ public final class Constants {
     public static final class Shooter {
         public static final int leftWheel = 19;
         public static final int rightWheel = 18;
-        public static final double speed = .40;
+        public static final double speed = .65;
+        public static final double sideSpeed = .85;
+        public static final double ampSpeed = .10;
     }
 
     /* Climber motor IDs, throughbore encoder, and power value */
