@@ -30,8 +30,8 @@ public class sideShoot extends Command {
   public void execute() {
     Shooter.leftWheel.setControl(new DutyCycleOut(Constants.Shooter.sideSpeed));
     Shooter.rightWheel.setControl(new DutyCycleOut(-Constants.Shooter.sideSpeed));
-    Index.leftSide.set(Constants.Indexer.speed);
-    Index.rightSide.set(-Constants.Indexer.speed);
+    Index.leftSide.set(Constants.Indexer.shootSpeed);
+    Index.rightSide.set(-Constants.Indexer.shootSpeed);
     Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
     Intake.bottomRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
   }

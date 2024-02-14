@@ -30,8 +30,8 @@ public class ampShoot extends Command {
   public void execute() {
     Shooter.leftWheel.setControl(new DutyCycleOut(Constants.Shooter.ampSpeed));
     Shooter.rightWheel.setControl(new DutyCycleOut(-Constants.Shooter.ampSpeed));
-    Index.leftSide.set(Constants.Indexer.speed);
-    Index.rightSide.set(-Constants.Indexer.speed);
+    Index.leftSide.set(Constants.Indexer.ampSpeed);
+    Index.rightSide.set(-Constants.Indexer.ampSpeed);
     Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
     Intake.bottomRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
   }
