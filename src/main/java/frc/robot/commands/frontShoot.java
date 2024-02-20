@@ -12,10 +12,10 @@ import frc.robot.subsystems.Index;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 
-public class Shoot extends Command {
+public class frontShoot extends Command {
 
   /** Creates a new Shoot. */
-  public Shoot(Shooter s_Shooter, Index i_Index, Intake i_Intake) {
+  public frontShoot(Shooter s_Shooter, Index i_Index, Intake i_Intake) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(s_Shooter, i_Index, i_Intake);
   }

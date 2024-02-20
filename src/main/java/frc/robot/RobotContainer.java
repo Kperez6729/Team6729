@@ -61,22 +61,6 @@ public class RobotContainer {
                                                 () -> -driver.getRawAxis(strafeAxis),
                                                 () -> -driver.getRawAxis(rotationAxis),
                                                 () -> robotCentric.getAsBoolean()));
-
-                /*
-                 * s_Shooter.setDefaultCommand(
-                 * new runShooter(
-                 * s_Shooter,
-                 * () -> shoot.getAsBoolean(),
-                 * () -> inShooter.getAsBoolean()));
-                 */
-
-                /*
-                 * i_Index.setDefaultCommand(
-                 * new runIndex(
-                 * i_Index,
-                 * () -> upIndex.getAsBoolean(),
-                 * () -> downIndex.getAsBoolean()));
-                 */
                 i_Intake.setDefaultCommand(
                                 new runIntake(
                                                 i_Intake,
@@ -103,7 +87,7 @@ public class RobotContainer {
                 /* Driver Buttons */
                 zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
 
-                shoot.whileTrue(new Shoot(s_Shooter, i_Index, i_Intake));
+                shoot.whileTrue(new frontShoot(s_Shooter, i_Index, i_Intake));
                 sideShooter.whileTrue(new sideShoot(s_Shooter, i_Index, i_Intake));
                 ampShoot.whileTrue(new frc.robot.commands.ampShoot(s_Shooter, i_Index, i_Intake));
         }
