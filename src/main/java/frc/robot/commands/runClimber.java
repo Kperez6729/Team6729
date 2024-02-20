@@ -1,9 +1,6 @@
 package frc.robot.commands;
 
 import java.util.function.DoubleSupplier;
-
-import com.revrobotics.CANSparkBase.IdleMode;
-
 //import com.ctre.phoenix6.controls.DutyCycleOut;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
@@ -26,7 +23,7 @@ public class runClimber extends Command {
             // Climber.rightArm.setControl(new DutyCycleOut(Constants.Climber.speed));
             Climber.leftArm.set(Constants.Climber.speed);
             Climber.rightArm.set(Constants.Climber.speed);
-        } else if (b.getAsDouble() != 0 && Climber.armPosition.getAbsolutePosition() > 0.54) {
+        } else if (b.getAsDouble() != 0 && Climber.armPosition.getAbsolutePosition() > 0.485) {
             // Climber.rightArm.setControl(new DutyCycleOut(-Constants.Climber.speed));
             // Climber.leftArm.setControl(new DutyCycleOut(Constants.Climber.speed));
             Climber.leftArm.set(-Constants.Climber.speed);
@@ -36,8 +33,6 @@ public class runClimber extends Command {
             // Climber.leftArm.setControl(new DutyCycleOut(0));
             Climber.leftArm.set(0);
             Climber.rightArm.set(0);
-            Climber.leftArm.setIdleMode(IdleMode.kBrake);
-            Climber.rightArm.setIdleMode(IdleMode.kBrake);
         }
     }
 }

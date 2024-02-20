@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 //import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
@@ -21,6 +22,9 @@ public class Climber extends SubsystemBase {
         leftArm = new CANSparkMax(Constants.Climber.leftArm, MotorType.kBrushless);
         rightArm = new CANSparkMax(Constants.Climber.rightArm, MotorType.kBrushless);
         armPosition = new DutyCycleEncoder(Constants.Climber.armPosition);
+
+        leftArm.setIdleMode(IdleMode.kBrake);
+        rightArm.setIdleMode(IdleMode.kBrake);
     }
 
     public void periodic() {

@@ -32,8 +32,8 @@ public class ampShoot extends Command {
     Shooter.rightWheel.setControl(new DutyCycleOut(-Constants.Shooter.ampSpeed));
     Index.leftSide.set(Constants.Indexer.ampSpeed);
     Index.rightSide.set(-Constants.Indexer.ampSpeed);
-    Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
-    Intake.bottomRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
+    Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed1);
+    Intake.bottomRoller.set(ControlMode.PercentOutput, Constants.Intake.speed1);
   }
 
   // Called once the command ends or is interrupted.
