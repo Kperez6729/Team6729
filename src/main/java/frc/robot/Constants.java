@@ -178,8 +178,8 @@ public final class Constants {
 
     /* Climber motor IDs, throughbore encoder, and power value */
     public static final class Climber {
-        public static final int leftArm = 25;
-        public static final int rightArm = 22;
+        public static final int leftArm = 22;
+        public static final int rightArm = 25;
         public static final double speed = 0.10;
         public static final int armPosition = 0;
     }
