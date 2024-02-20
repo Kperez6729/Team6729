@@ -156,7 +156,6 @@ public final class Constants {
         public static final int topRoller = 21;
         public static final int bottomRoller = 20;
         public static final double speed = 0.50;
-        public static final double speed1 = .50;
     }
 
     /* Indexer motor IDs, breakbeam, and power value */
