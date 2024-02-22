@@ -6,12 +6,12 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
-
 import frc.robot.subsystems.Intake;
 
 public class runIntake extends Command {
     private BooleanSupplier a;
     private BooleanSupplier b;
+    public static double slowRotate;
 
     public runIntake(Intake i_Intake, BooleanSupplier a, BooleanSupplier b) {
         addRequirements(i_Intake);
@@ -25,12 +25,15 @@ public class runIntake extends Command {
         if (a.getAsBoolean()) {
             Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
             Intake.bottomRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
+            slowRotate = 0.5;
+
         } else if (b.getAsBoolean()) {
             Intake.topRoller.set(ControlMode.PercentOutput, -Constants.Intake.speed);
             Intake.bottomRoller.set(ControlMode.PercentOutput, -Constants.Intake.speed);
         } else {
             Intake.topRoller.set(ControlMode.PercentOutput, 0);
             Intake.bottomRoller.set(ControlMode.PercentOutput, 0);
+            slowRotate = 1.0;
         }
     }
 }
