@@ -89,7 +89,7 @@ public class RobotContainer {
 
                 shoot.whileTrue(new frontShoot(s_Shooter, i_Index, i_Intake));
                 sideShooter.whileTrue(new sideShoot(s_Shooter, i_Index, i_Intake));
-                ampShoot.whileTrue(new frc.robot.commands.ampShoot(s_Shooter, i_Index, i_Intake));
+                ampShoot.whileTrue(new ampShoot(s_Shooter, i_Index, i_Intake));
         }
 
         /**

@@ -1,40 +1,29 @@
 package frc.robot.subsystems;
 
 import frc.robot.SwerveModule;
-import frc.robot.Constants.Swerve.Mod0;
-import frc.lib.math.Conversions;
 import frc.robot.Constants;
-
-import java.util.function.Supplier;
-
 import com.ctre.phoenix6.configs.Pigeon2Configuration;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
-
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
-//import com.kauailabs.navx.frc.AHRS;
-//import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.math.proto.Kinematics;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Swerve extends SubsystemBase {
     public SwerveDriveOdometry swerveOdometry;
-    public SwerveDriveKinematics kinematics;
     public SwerveModule[] mSwerveMods;
     public Pigeon2 gyro;
-    public ChassisSpeeds chassisSpeed = kinematics.toChassisSpeeds(mSwerveMods[4].getState());
 
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
@@ -53,8 +42,8 @@ public class Swerve extends SubsystemBase {
         AutoBuilder.configureHolonomic(
                 this::getPose, // Robot pose supplier
                 this::setPose, // Method to reset odometry (will be called if your auto has a starting pose)
-                this.chassisSpeed, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
-                this::setModuleStates, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
+                this::getCurrentSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
+                this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
                 new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your
                                                  // Constants class
                         new PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
@@ -121,6 +110,19 @@ public class Swerve extends SubsystemBase {
             positions[mod.moduleNumber] = mod.getPosition();
         }
         return positions;
+    }
+
+    public void driveRobotRelative(ChassisSpeeds speeds) {
+        SwerveModuleState[] desiredStates = Constants.Swerve.swerveKinematics.toSwerveModuleStates(speeds);
+        SwerveDriveKinematics.desaturateWheelSpeeds(desiredStates, Constants.Swerve.maxSpeed);
+        
+        for (SwerveModule mod : mSwerveMods) {
+            mod.setDesiredState(desiredStates[mod.moduleNumber], false);
+        }
+    }
+
+    public ChassisSpeeds getCurrentSpeeds() {
+        return Constants.Swerve.swerveKinematics.toChassisSpeeds(mSwerveMods[4].getState());
     }
 
     public Pose2d getPose() {
