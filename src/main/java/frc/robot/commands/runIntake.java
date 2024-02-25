@@ -25,7 +25,7 @@ public class runIntake extends Command {
         if (a.getAsBoolean()) {
             Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
             Intake.bottomRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
-            slowRotate = 0.5;
+            slowRotate = 0.25;
 
         } else if (b.getAsBoolean()) {
             Intake.topRoller.set(ControlMode.PercentOutput, -Constants.Intake.speed);

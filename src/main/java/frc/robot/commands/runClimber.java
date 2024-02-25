@@ -18,12 +18,12 @@ public class runClimber extends Command {
 
     @Override
     public void execute() {
-        if (a.getAsDouble() != 0 && Climber.armPosition.getAbsolutePosition() < 0.812) {
+        if (a.getAsDouble() != 0 && Climber.armPosition.getAbsolutePosition() < 0.80) {
             // Climber.leftArm.setControl(new DutyCycleOut(-Constants.Climber.speed));
             // Climber.rightArm.setControl(new DutyCycleOut(Constants.Climber.speed));
             Climber.leftArm.set(Constants.Climber.speed);
             Climber.rightArm.set(Constants.Climber.speed);
-        } else if (b.getAsDouble() != 0 && Climber.armPosition.getAbsolutePosition() > 0.465) {
+        } else if (b.getAsDouble() != 0 && Climber.armPosition.getAbsolutePosition() > 0.49) {
             // Climber.rightArm.setControl(new DutyCycleOut(-Constants.Climber.speed));
             // Climber.leftArm.setControl(new DutyCycleOut(Constants.Climber.speed));
             Climber.leftArm.set(-Constants.Climber.speed);

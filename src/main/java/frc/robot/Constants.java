@@ -23,8 +23,8 @@ public final class Constants {
                 .Falcon500(COTSTalonFXSwerveConstants.SDS.MK4.driveRatios.L2);
 
         /* Drivetrain Constants */
-        public static final double trackWidth = Units.inchesToMeters(24.75);
-        public static final double wheelBase = Units.inchesToMeters(22.5);
+        public static final double trackWidth = Units.inchesToMeters(24.5);
+        public static final double wheelBase = Units.inchesToMeters(22.25);
         public static final double wheelCircumference = chosenModule.wheelCircumference;
 
         /*
@@ -86,9 +86,9 @@ public final class Constants {
 
         /* Swerve Profiling Values */
         /** Meters per Second */
-        public static final double maxSpeed = 4.79; // Originally 4.5, change if needed... Nah, FULL POWER
+        public static final double maxSpeed = 2.5; // Originally 4.5, change if needed... Nah, FULL POWER
         /** Radians per Second */
-        public static final double maxAngularVelocity = 2.5; // Originally 10.0
+        public static final double maxAngularVelocity = 5.0; // Originally 10.0
 
         /* Neutral Modes */
         public static final NeutralModeValue angleNeutralMode = NeutralModeValue.Coast;
@@ -172,14 +172,14 @@ public final class Constants {
         public static final int rightWheel = 19;
         public static final double speed = .65;
         public static final double sideSpeed = .85;
-        public static final double ampSpeed = .40;
+        public static final double ampSpeed = .45;
     }
 
     /* Climber motor IDs, throughbore encoder, and power value */
     public static final class Climber {
         public static final int leftArm = 22;
         public static final int rightArm = 25;
-        public static final double speed = 0.10;
+        public static final double speed = .15;
         public static final int armPosition = 0;
     }
 }
