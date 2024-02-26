@@ -33,7 +33,6 @@ public class runIntake extends Command {
         } else {
             Intake.topRoller.set(ControlMode.PercentOutput, 0);
             Intake.bottomRoller.set(ControlMode.PercentOutput, 0);
-            slowRotate = 1.0;
         }
     }
 }
