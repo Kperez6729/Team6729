@@ -58,14 +58,6 @@ public class RobotContainer {
          * The container for the robot. Contains subsystems, OI devices, and commands.
          */
         public RobotContainer() {
-                NamedCommands.registerCommand("side shoot", new sideShoot(s_Shooter, i_Index, i_Intake));
-                NamedCommands.registerCommand("arm extend", new armOut(c_Climber));
-                NamedCommands.registerCommand("amp shoot", new ampShoot(s_Shooter, i_Index, i_Intake));
-                NamedCommands.registerCommand("Intake", new upIntake(i_Intake));
-                NamedCommands.registerCommand("stop Intake", new stopIntake(i_Intake));
-                NamedCommands.registerCommand("Stop shoot", new stopShoot(s_Shooter, i_Index, i_Intake));
-                NamedCommands.registerCommand("Stop Climber", new stopClimb(c_Climber));
-
                 s_Swerve.setDefaultCommand(
                                 new TeleopSwerve(
                                                 s_Swerve,
@@ -85,6 +77,18 @@ public class RobotContainer {
 
                 // Configure the button bindings
                 configureButtonBindings();
+
+                NamedCommands.registerCommand("side shoot", new sideShoot(s_Shooter, i_Index,
+                                i_Intake));
+                NamedCommands.registerCommand("arm extend", new armOut(c_Climber));
+                NamedCommands.registerCommand("amp shoot", new ampShoot(s_Shooter, i_Index,
+                                i_Intake));
+                NamedCommands.registerCommand("Intake", new upIntake(i_Intake));
+                NamedCommands.registerCommand("stop Intake", new stopIntake(i_Intake));
+                NamedCommands.registerCommand("Stop shoot", new stopShoot(s_Shooter, i_Index,
+                                i_Intake));
+                NamedCommands.registerCommand("Stop Climber", new stopClimb(c_Climber));
+
                 autoChooser = AutoBuilder.buildAutoChooser();
                 SmartDashboard.putData("Auto Chooser", autoChooser);
         }
