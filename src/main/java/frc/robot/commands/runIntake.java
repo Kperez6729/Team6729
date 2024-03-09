@@ -12,6 +12,7 @@ public class runIntake extends Command {
     private BooleanSupplier a;
     private BooleanSupplier b;
     public static double slowRotate;
+    public static double slowDrive;
 
     public runIntake(Intake i_Intake, BooleanSupplier a, BooleanSupplier b) {
         addRequirements(i_Intake);
@@ -26,6 +27,7 @@ public class runIntake extends Command {
             Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
             Intake.bottomRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
             slowRotate = 0.25;
+            slowDrive = 0.75;
 
         } else if (b.getAsBoolean()) {
             Intake.topRoller.set(ControlMode.PercentOutput, -Constants.Intake.speed);
@@ -34,6 +36,7 @@ public class runIntake extends Command {
             Intake.topRoller.set(ControlMode.PercentOutput, 0);
             Intake.bottomRoller.set(ControlMode.PercentOutput, 0);
             slowRotate = 1.0;
+            slowDrive = 1.0;
         }
     }
 }

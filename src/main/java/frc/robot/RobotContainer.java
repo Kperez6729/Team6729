@@ -1,8 +1,6 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.auto.NamedCommands;
-
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -32,8 +30,8 @@ public class RobotContainer {
         private final int translationAxis = XboxController.Axis.kLeftY.value;
         private final int strafeAxis = XboxController.Axis.kLeftX.value;
         private final int rotationAxis = XboxController.Axis.kRightX.value;
-        private final int climberUp = XboxController.Axis.kLeftTrigger.value;
-        private final int climberDown = XboxController.Axis.kRightTrigger.value;
+        private final int climberDown = XboxController.Axis.kLeftTrigger.value;
+        private final int climberUp = XboxController.Axis.kRightTrigger.value;
 
         /* Driver Buttons */
         private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kStart.value);
@@ -58,6 +56,7 @@ public class RobotContainer {
          * The container for the robot. Contains subsystems, OI devices, and commands.
          */
         public RobotContainer() {
+
                 s_Swerve.setDefaultCommand(
                                 new TeleopSwerve(
                                                 s_Swerve,
@@ -77,18 +76,6 @@ public class RobotContainer {
 
                 // Configure the button bindings
                 configureButtonBindings();
-
-                NamedCommands.registerCommand("side shoot", new sideShoot(s_Shooter, i_Index,
-                                i_Intake));
-                NamedCommands.registerCommand("arm extend", new armOut(c_Climber));
-                NamedCommands.registerCommand("amp shoot", new ampShoot(s_Shooter, i_Index,
-                                i_Intake));
-                NamedCommands.registerCommand("Intake", new upIntake(i_Intake));
-                NamedCommands.registerCommand("stop Intake", new stopIntake(i_Intake));
-                NamedCommands.registerCommand("Stop shoot", new stopShoot(s_Shooter, i_Index,
-                                i_Intake));
-                NamedCommands.registerCommand("Stop Climber", new stopClimb(c_Climber));
-
                 autoChooser = AutoBuilder.buildAutoChooser();
                 SmartDashboard.putData("Auto Chooser", autoChooser);
         }

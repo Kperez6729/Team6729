@@ -13,7 +13,7 @@ import frc.lib.util.COTSTalonFXSwerveConstants;
 import frc.lib.util.SwerveModuleConstants;
 
 public final class Constants {
-    public static final double stickDeadband = 0.12;
+    public static final double stickDeadband = 0.1;
 
     public static final class Swerve {
         // public static final boolean invertGyro = true; // Always ensure Gyro is CCW+
@@ -88,7 +88,7 @@ public final class Constants {
         /** Meters per Second */
         public static final double maxSpeed = 4.5; // Originally 4.5, change if needed... Nah, FULL POWER
         /** Radians per Second */
-        public static final double maxAngularVelocity = 10.0; // Originally 10.0
+        public static final double maxAngularVelocity = 8.0; // Originally 10.0
 
         /* Neutral Modes */
         public static final NeutralModeValue angleNeutralMode = NeutralModeValue.Coast;
@@ -172,14 +172,14 @@ public final class Constants {
         public static final int rightWheel = 19;
         public static final double speed = .65;
         public static final double sideSpeed = .85;
-        public static final double ampSpeed = .30;
+        public static final double ampSpeed = .12;
     }
 
     /* Climber motor IDs, throughbore encoder, and power value */
     public static final class Climber {
         public static final int leftArm = 22;
         public static final int rightArm = 25;
-        public static final double speed = 0.20;
+        public static final double speed = 0.50;
         public static final int armPosition = 0;
     }
 }
