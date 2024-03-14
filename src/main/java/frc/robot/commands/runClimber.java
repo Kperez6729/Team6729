@@ -21,18 +21,18 @@ public class runClimber extends Command {
         if (a.getAsDouble() != 0 && Climber.armPosition.getAbsolutePosition() < 0.695) {
             Climber.leftArm.setControl(new DutyCycleOut(Constants.Climber.speed));
             Climber.rightArm.setControl(new DutyCycleOut(-Constants.Climber.speed));
-         //   Climber.leftArm.set(Constants.Climber.speed);
-          //  Climber.rightArm.set(Constants.Climber.speed);
+            // Climber.leftArm.set(Constants.Climber.speed);
+            // Climber.rightArm.set(Constants.Climber.speed);
         } else if (b.getAsDouble() != 0 && Climber.armPosition.getAbsolutePosition() > 0.44) {
-            Climber.rightArm.setControl(new DutyCycleOut(Constants.Climber.speed));
-            Climber.leftArm.setControl(new DutyCycleOut(-Constants.Climber.speed));
-           // Climber.leftArm.set(-Constants.Climber.speed);
-           //Climber.rightArm.set(-Constants.Climber.speed);
+            Climber.rightArm.setControl(new DutyCycleOut(Constants.Climber.speed * 0.4));
+            Climber.leftArm.setControl(new DutyCycleOut(-Constants.Climber.speed * 0.4));
+            // Climber.leftArm.set(-Constants.Climber.speed);
+            // Climber.rightArm.set(-Constants.Climber.speed);
         } else {
             Climber.rightArm.setControl(new DutyCycleOut(0));
             Climber.leftArm.setControl(new DutyCycleOut(0));
-           // Climber.leftArm.set(0);
-           // Climber.rightArm.set(0);
+            // Climber.leftArm.set(0);
+            // Climber.rightArm.set(0);
         }
     }
 }

@@ -1,6 +1,8 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -35,7 +37,7 @@ public class RobotContainer {
 
         /* Driver Buttons */
         private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kStart.value);
-        private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kBack.value);
+        private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kRightStick.value);
         private final JoystickButton shoot = new JoystickButton(driver, XboxController.Button.kY.value);
         private final JoystickButton ampShoot = new JoystickButton(driver, XboxController.Button.kB.value);
         private final JoystickButton sideShooter = new JoystickButton(driver, XboxController.Button.kX.value);
@@ -56,7 +58,6 @@ public class RobotContainer {
          * The container for the robot. Contains subsystems, OI devices, and commands.
          */
         public RobotContainer() {
-
                 s_Swerve.setDefaultCommand(
                                 new TeleopSwerve(
                                                 s_Swerve,
@@ -73,6 +74,16 @@ public class RobotContainer {
                                 new runClimber(c_Climber,
                                                 () -> driver.getRawAxis(climberUp),
                                                 () -> driver.getRawAxis(climberDown)));
+
+                NamedCommands.registerCommand("side shoot", new sideShoot(s_Shooter, i_Index,
+                                i_Intake));
+                NamedCommands.registerCommand("amp shoot", new ampShoot(s_Shooter, i_Index,
+                                i_Intake));
+                NamedCommands.registerCommand("front shoot", new frontShoot(s_Shooter, i_Index, i_Intake));
+                NamedCommands.registerCommand("Intake", new upIntake(i_Intake));
+                NamedCommands.registerCommand("stop Intake", new stopIntake(i_Intake));
+                NamedCommands.registerCommand("Stop shoot", new stopShoot(s_Shooter, i_Index,
+                                i_Intake));
 
                 // Configure the button bindings
                 configureButtonBindings();
