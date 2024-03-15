@@ -9,7 +9,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
@@ -77,8 +79,6 @@ public class RobotContainer {
 
                 NamedCommands.registerCommand("side shoot", new sideShoot(s_Shooter, i_Index,
                                 i_Intake));
-                NamedCommands.registerCommand("amp shoot", new ampShoot(s_Shooter, i_Index,
-                                i_Intake));
                 NamedCommands.registerCommand("front shoot", new frontShoot(s_Shooter, i_Index, i_Intake));
                 NamedCommands.registerCommand("Intake", new upIntake(i_Intake));
                 NamedCommands.registerCommand("stop Intake", new stopIntake(i_Intake));
@@ -105,7 +105,8 @@ public class RobotContainer {
 
                 shoot.whileTrue(new frontShoot(s_Shooter, i_Index, i_Intake));
                 sideShooter.whileTrue(new sideShoot(s_Shooter, i_Index, i_Intake));
-                ampShoot.whileTrue(new ampShoot(s_Shooter, i_Index, i_Intake));
+                ampShoot.whileTrue(new ampShoot(s_Shooter).alongWith(new SequentialCommandGroup(
+                                Commands.waitSeconds(0.5), new indexAmp(i_Index, i_Intake))));
         }
 
         /**
