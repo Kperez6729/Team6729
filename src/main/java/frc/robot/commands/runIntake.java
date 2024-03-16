@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
+import frc.robot.subsystems.Index;
 import frc.robot.subsystems.Intake;
 
 public class runIntake extends Command {
@@ -14,8 +15,8 @@ public class runIntake extends Command {
     public static double slowRotate;
     public static double slowDrive;
 
-    public runIntake(Intake i_Intake, BooleanSupplier a, BooleanSupplier b) {
-        addRequirements(i_Intake);
+    public runIntake(Intake i_Intake, Index i_Index, BooleanSupplier a, BooleanSupplier b) {
+        addRequirements(i_Intake, i_Index);
         this.a = a;
         this.b = b;
 
@@ -32,6 +33,8 @@ public class runIntake extends Command {
         } else if (b.getAsBoolean()) {
             Intake.topRoller.set(ControlMode.PercentOutput, -Constants.Intake.speed);
             Intake.bottomRoller.set(ControlMode.PercentOutput, -Constants.Intake.speed);
+            Index.leftSide.set(Constants.Indexer.shootSpeed);
+            Index.rightSide.set(-Constants.Indexer.shootSpeed);
         } else {
             Intake.topRoller.set(ControlMode.PercentOutput, 0);
             Intake.bottomRoller.set(ControlMode.PercentOutput, 0);

@@ -69,7 +69,7 @@ public class RobotContainer {
                                                 () -> robotCentric.getAsBoolean()));
                 i_Intake.setDefaultCommand(
                                 new runIntake(
-                                                i_Intake,
+                                                i_Intake, i_Index,
                                                 () -> inIntake.getAsBoolean(),
                                                 () -> outIntake.getAsBoolean()));
                 c_Climber.setDefaultCommand(
@@ -77,9 +77,9 @@ public class RobotContainer {
                                                 () -> driver.getRawAxis(climberUp),
                                                 () -> driver.getRawAxis(climberDown)));
 
-                NamedCommands.registerCommand("side shoot", new sideShoot(s_Shooter, i_Index,
+                NamedCommands.registerCommand("side shoot", new sideShootAuto(s_Shooter, i_Index,
                                 i_Intake));
-                NamedCommands.registerCommand("front shoot", new frontShoot(s_Shooter, i_Index, i_Intake));
+                NamedCommands.registerCommand("front shoot", new frontShootAuto(s_Shooter, i_Index, i_Intake));
                 NamedCommands.registerCommand("Intake", new upIntake(i_Intake));
                 NamedCommands.registerCommand("stop Intake", new stopIntake(i_Intake));
                 NamedCommands.registerCommand("Stop shoot", new stopShoot(s_Shooter, i_Index,
@@ -103,10 +103,12 @@ public class RobotContainer {
                 /* Driver Buttons */
                 zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroHeading()));
 
-                shoot.whileTrue(new frontShoot(s_Shooter, i_Index, i_Intake));
-                sideShooter.whileTrue(new sideShoot(s_Shooter, i_Index, i_Intake));
+                shoot.whileTrue(new frontShoot(s_Shooter).alongWith(new SequentialCommandGroup(
+                                Commands.waitSeconds(0.5), new frontIndex(i_Index, i_Intake))));
+                sideShooter.whileTrue(new sideShoot(s_Shooter).alongWith(new SequentialCommandGroup(
+                                Commands.waitSeconds(0.5), new sideIndex(i_Index, i_Intake))));
                 ampShoot.whileTrue(new ampShoot(s_Shooter).alongWith(new SequentialCommandGroup(
-                                Commands.waitSeconds(0.5), new indexAmp(i_Index, i_Intake))));
+                                Commands.waitSeconds(0.5), new ampIndex(i_Index, i_Intake))));
         }
 
         /**

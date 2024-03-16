@@ -4,17 +4,18 @@
 
 package frc.robot.commands;
 
-import com.ctre.phoenix6.controls.DutyCycleOut;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Index;
+import frc.robot.subsystems.Intake;
 
-public class frontShoot extends Command {
-
-  /** Creates a new Shoot. */
-  public frontShoot(Shooter s_Shooter) {
+public class ampIndex extends Command {
+  /** Creates a new indexAmp. */
+  public ampIndex(Index i_Index, Intake i_Intake) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(s_Shooter);
+    addRequirements(i_Index, i_Intake);
   }
 
   // Called when the command is initially scheduled.
@@ -25,15 +26,19 @@ public class frontShoot extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.leftWheel.setControl(new DutyCycleOut(-Constants.Shooter.speed));
-    Shooter.rightWheel.setControl(new DutyCycleOut(Constants.Shooter.speed));
+    Index.leftSide.set(-Constants.Indexer.ampSpeed);
+    Index.rightSide.set(Constants.Indexer.ampSpeed);
+    Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
+    Intake.bottomRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Shooter.leftWheel.setControl(new DutyCycleOut(0));
-    Shooter.rightWheel.setControl(new DutyCycleOut(0));
+    Index.leftSide.set(0);
+    Index.rightSide.set(0);
+    Intake.topRoller.set(ControlMode.PercentOutput, 0);
+    Intake.bottomRoller.set(ControlMode.PercentOutput, 0);
   }
 
   // Returns true when the command should end.
