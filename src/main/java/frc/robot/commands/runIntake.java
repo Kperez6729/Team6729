@@ -38,6 +38,8 @@ public class runIntake extends Command {
         } else {
             Intake.topRoller.set(ControlMode.PercentOutput, 0);
             Intake.bottomRoller.set(ControlMode.PercentOutput, 0);
+            Index.leftSide.set(0);
+            Index.rightSide.set(0);
             slowRotate = 1.0;
             slowDrive = 1.0;
         }

@@ -5,6 +5,7 @@ import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -29,26 +30,29 @@ public class RobotContainer {
         private final SendableChooser<Command> autoChooser;
         /* Controllers */
         private final Joystick driver = new Joystick(0);
+        private final Joystick operator = new Joystick(1);
 
         /* Drive Controls */
         private final int translationAxis = XboxController.Axis.kLeftY.value;
         private final int strafeAxis = XboxController.Axis.kLeftX.value;
         private final int rotationAxis = XboxController.Axis.kRightX.value;
-        private final int climberDown = XboxController.Axis.kLeftTrigger.value;
-        private final int climberUp = XboxController.Axis.kRightTrigger.value;
 
         /* Driver Buttons */
+        private final int climberDown = XboxController.Axis.kLeftTrigger.value;
+        private final int climberUp = XboxController.Axis.kRightTrigger.value;
         private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kStart.value);
         private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kRightStick.value);
         private final JoystickButton shoot = new JoystickButton(driver, XboxController.Button.kY.value);
         private final JoystickButton ampShoot = new JoystickButton(driver, XboxController.Button.kB.value);
         private final JoystickButton sideShooter = new JoystickButton(driver, XboxController.Button.kX.value);
-        // private final JoystickButton upIndex = new JoystickButton(driver,
-        // XboxController.Button.kY.value);
-        // private final JoystickButton downIndex = new JoystickButton(driver,
-        // XboxController.Button.kA.value);
         private final JoystickButton outIntake = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
         private final JoystickButton inIntake = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
+
+        /* Operator Buttons */
+        private final JoystickButton opShoot = new JoystickButton(operator, PS4Controller.Button.kTriangle.value);
+        private final JoystickButton opAmpShoot = new JoystickButton(operator, PS4Controller.Button.kSquare.value);
+        private final JoystickButton opSideShoot = new JoystickButton(operator, PS4Controller.Button.kCircle.value);
+
         /* Subsystems */
         private final Swerve s_Swerve = new Swerve();
         private final Shooter s_Shooter = new Shooter();
@@ -108,7 +112,14 @@ public class RobotContainer {
                 sideShooter.whileTrue(new sideShoot(s_Shooter).alongWith(new SequentialCommandGroup(
                                 Commands.waitSeconds(0.5), new sideIndex(i_Index, i_Intake))));
                 ampShoot.whileTrue(new ampShoot(s_Shooter).alongWith(new SequentialCommandGroup(
-                                Commands.waitSeconds(0.5), new ampIndex(i_Index, i_Intake))));
+                                Commands.waitSeconds(0.75), new ampIndex(i_Index, i_Intake))));
+
+                opShoot.whileTrue(new frontShoot(s_Shooter).alongWith(new SequentialCommandGroup(
+                                Commands.waitSeconds(0.5), new frontIndex(i_Index, i_Intake))));
+                opSideShoot.whileTrue(new sideShoot(s_Shooter).alongWith(new SequentialCommandGroup(
+                                Commands.waitSeconds(0.5), new sideIndex(i_Index, i_Intake))));
+                opAmpShoot.whileTrue(new ampShoot(s_Shooter).alongWith(new SequentialCommandGroup(
+                                Commands.waitSeconds(0.75), new ampIndex(i_Index, i_Intake))));
         }
 
         /**
