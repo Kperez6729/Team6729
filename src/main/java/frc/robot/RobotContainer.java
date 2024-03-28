@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
@@ -52,6 +53,8 @@ public class RobotContainer {
         private final JoystickButton opShoot = new JoystickButton(operator, PS4Controller.Button.kTriangle.value);
         private final JoystickButton opAmpShoot = new JoystickButton(operator, PS4Controller.Button.kSquare.value);
         private final JoystickButton opSideShoot = new JoystickButton(operator, PS4Controller.Button.kCircle.value);
+        private final JoystickButton opClimbUp = new JoystickButton(operator, PS4Controller.Button.kR1.value);
+        // private final int opClimbUp = PS4Controller.Axis.kR2.value;
 
         /* Subsystems */
         private final Swerve s_Swerve = new Swerve();
@@ -76,10 +79,12 @@ public class RobotContainer {
                                                 i_Intake, i_Index,
                                                 () -> inIntake.getAsBoolean(),
                                                 () -> outIntake.getAsBoolean()));
+
                 c_Climber.setDefaultCommand(
                                 new runClimber(c_Climber,
                                                 () -> driver.getRawAxis(climberUp),
-                                                () -> driver.getRawAxis(climberDown)));
+                                                () -> driver.getRawAxis(climberDown),
+                                                () -> opClimbUp.getAsBoolean()));
 
                 NamedCommands.registerCommand("side shoot", new sideShootAuto(s_Shooter, i_Index,
                                 i_Intake));
@@ -113,13 +118,18 @@ public class RobotContainer {
                                 Commands.waitSeconds(0.5), new sideIndex(i_Index, i_Intake))));
                 ampShoot.whileTrue(new ampShoot(s_Shooter).alongWith(new SequentialCommandGroup(
                                 Commands.waitSeconds(0.75), new ampIndex(i_Index, i_Intake))));
-
+                /* Operator Buttons */
                 opShoot.whileTrue(new frontShoot(s_Shooter).alongWith(new SequentialCommandGroup(
                                 Commands.waitSeconds(0.5), new frontIndex(i_Index, i_Intake))));
                 opSideShoot.whileTrue(new sideShoot(s_Shooter).alongWith(new SequentialCommandGroup(
                                 Commands.waitSeconds(0.5), new sideIndex(i_Index, i_Intake))));
                 opAmpShoot.whileTrue(new ampShoot(s_Shooter).alongWith(new SequentialCommandGroup(
                                 Commands.waitSeconds(0.75), new ampIndex(i_Index, i_Intake))));
+                /* Triggers */
+                Trigger seeNote = new Trigger(() -> Intake.detectNote.get());
+
+                seeNote.whileTrue(new noNoteRed(i_Intake));
+                seeNote.whileFalse(new noteGreen(i_Intake));
         }
 
         /**
