@@ -4,13 +4,16 @@
 
 package frc.robot.commands;
 
+import java.util.function.BooleanSupplier;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.StatusLED;
 
-public class noteGreen extends Command {
-  /** Creates a new noteGreen. */
-  public noteGreen(Intake i_Intake) {
-    // Use addRequirements() here to declare subsystem dependencies.
+public class noteDetect extends Command {
+  private BooleanSupplier a;
+  
+  public noteDetect(StatusLED s_Status, BooleanSupplier a) {
+    addRequirements(s_Status);
+    this.a = a;
   }
 
   // Called when the command is initially scheduled.
@@ -21,7 +24,17 @@ public class noteGreen extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Intake.leds.set(0.77); // Set LEDs to green
+    if (a.getAsBoolean() == true) {
+      for (var i = 0; i < StatusLED.ledsBuffer.getLength(); i++) {
+        StatusLED.ledsBuffer.setRGB(i, 255, 0, 0);
+      }
+    } else if (a.getAsBoolean() == false) {
+      for (var i = 0; i < StatusLED.ledsBuffer.getLength(); i++) {
+        StatusLED.ledsBuffer.setRGB(i, 0, 255, 0);
+      }
+    }
+    StatusLED.leds.setData(StatusLED.ledsBuffer);
+    StatusLED.leds.start();
   }
 
   // Called once the command ends or is interrupted.

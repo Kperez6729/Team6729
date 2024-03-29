@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.StatusLED;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -50,7 +51,11 @@ public class Robot extends TimedRobot {
 
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    for (var i = 0; i < StatusLED.ledsBuffer.getLength(); i++) {
+        StatusLED.ledsBuffer.setRGB(i, 0, 0, 255);
+      }
+  }
 
   @Override
   public void disabledPeriodic() {}
