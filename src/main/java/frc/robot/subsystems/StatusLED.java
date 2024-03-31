@@ -19,10 +19,10 @@ public class StatusLED extends SubsystemBase {
 
   /** Creates a new StatusLED. */
   public StatusLED() {
-    leds = new AddressableLED(Constants.Intake.leds);
+    leds = new AddressableLED(Constants.StatusLED.leds);
     ledsBuffer = new AddressableLEDBuffer(60);
     leds.setLength(ledsBuffer.getLength());
-    detectNote = new DigitalInput(Constants.Intake.detectNote);
+    detectNote = new DigitalInput(Constants.StatusLED.detectNote);
   }
 
   @Override
