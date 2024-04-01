@@ -156,8 +156,6 @@ public final class Constants {
         public static final int topRoller = 21;
         public static final int bottomRoller = 20;
         public static final double speed = 0.50;
-        public static final int detectNote = 1;
-        public static final int leds = 0;
     }
 
     /* Indexer motor IDs, breakbeam, and power value */
@@ -183,5 +181,16 @@ public final class Constants {
         public static final int rightArm = 25;
         public static final double speed = 0.50;
         public static final int armPosition = 0;
+    }
+
+    /* StatusLED breakbeam and LED IDs */
+    public static final class StatusLED {
+        public static final int detectNote = 1;
+        public static final int leds = 0;
+    }
+
+    /* Shamper motor ID */
+    public static final class Shamper {
+        public static final int ampShooter = 24;
     }
 }
