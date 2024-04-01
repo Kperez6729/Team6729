@@ -13,7 +13,7 @@ import frc.lib.util.COTSTalonFXSwerveConstants;
 import frc.lib.util.SwerveModuleConstants;
 
 public final class Constants {
-    public static final double stickDeadband = 0.1;
+    public static final double stickDeadband = 0.12;
 
     public static final class Swerve {
         // public static final boolean invertGyro = true; // Always ensure Gyro is CCW+
@@ -174,7 +174,7 @@ public final class Constants {
         public static final int rightWheel = 19;
         public static final double speed = 0.75;
         public static final double sideSpeed = 1.0;
-        public static final double ampSpeed = .07;
+        public static final double ampSpeed = .25;
     }
 
     /* Climber motor IDs, throughbore encoder, and power value */

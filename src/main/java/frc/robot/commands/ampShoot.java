@@ -26,7 +26,7 @@ public class ampShoot extends Command {
   @Override
   public void execute() {
     Shooter.leftWheel.setControl(new DutyCycleOut(-Constants.Shooter.ampSpeed));
-    Shooter.rightWheel.setControl(new DutyCycleOut(Constants.Shooter.ampSpeed * 4.0));
+    Shooter.rightWheel.setControl(new DutyCycleOut(Constants.Shooter.ampSpeed));
   }
 
   // Called once the command ends or is interrupted.
