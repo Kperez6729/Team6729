@@ -9,12 +9,14 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Shamper extends SubsystemBase {
-  public static TalonSRX ampShooter;
-  
-  /** Creates a new Shamper. */
-  public Shamper() {
-    ampShooter = new TalonSRX(Constants.Shamper.ampShooter);
+public class MobileMiniShooter extends SubsystemBase {
+  public static TalonSRX topShooter;
+  public static TalonSRX bottomShooter;
+
+  /** Creates a new MobileMiniShooter. */
+  public MobileMiniShooter() {
+    topShooter = new TalonSRX(Constants.MMS.topShooter);
+    bottomShooter = new TalonSRX(Constants.MMS.bottomShooter);
   }
 
   @Override

@@ -189,8 +189,10 @@ public final class Constants {
         public static final int leds = 0;
     }
 
-    /* Shamper motor ID */
-    public static final class Shamper {
-        public static final int ampShooter = 24;
+    /* MobileMiniShooter (MMS) motor IDs and power values */
+    public static final class MMS {
+        public static final int topShooter = 24;
+        public static final int bottomShooter = 26;
+        public static final double speed = 0.30;
     }
 }
