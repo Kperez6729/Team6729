@@ -20,7 +20,7 @@ import frc.robot.subsystems.StatusLED;
  */
 public class Robot extends TimedRobot {
   public static final CTREConfigs ctreConfigs = new CTREConfigs();
-
+  private int m_rainbowFirstPixelHue;
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
@@ -64,15 +64,25 @@ public class Robot extends TimedRobot {
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
   public void disabledInit() {
-    for (var i = 0; i < StatusLED.ledsBuffer.getLength(); i++) {
+    /*for (var i = 0; i < StatusLED.ledsBuffer.getLength(); i++) {
       StatusLED.ledsBuffer.setRGB(i, 0, 0, 255);
     }
-    StatusLED.leds.setData(StatusLED.ledsBuffer);
-    StatusLED.leds.start();
+    StatusLED.leds.setData(StatusLED.ledsBuffer);*/
   }
 
   @Override
   public void disabledPeriodic() {
+    for (var i = 0; i < StatusLED.ledsBuffer.getLength(); i++) {
+      // Calculate the hue - hue is easier for rainbows because the color shape is a circle so only one value needs to precess
+      final var hue = (m_rainbowFirstPixelHue + (i * 180 / StatusLED.ledsBuffer.getLength())) % 180;
+      // Set the value
+      StatusLED.ledsBuffer.setHSV(i, hue, 255, 128);
+    }
+    // Increase by to make the rainbow "move" + check bounds
+    m_rainbowFirstPixelHue += 3;
+    m_rainbowFirstPixelHue %= 180;
+    // Set the LEDs
+    StatusLED.leds.setData(StatusLED.ledsBuffer);
   }
 
   /**
