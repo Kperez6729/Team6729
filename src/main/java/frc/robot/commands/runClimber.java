@@ -23,7 +23,11 @@ public class runClimber extends Command {
 
     @Override
     public void execute() {
+<<<<<<< Updated upstream
         if (a.getAsDouble() != 0 && Climber.armPosition.getAbsolutePosition() < 0.78) {
+=======
+        if (a.getAsDouble() != 0 && Climber.armPosition.getAbsolutePosition() < 0.79) {
+>>>>>>> Stashed changes
             Climber.leftArm.setControl(new DutyCycleOut(a.getAsDouble()));
             Climber.rightArm.setControl(new DutyCycleOut(a.getAsDouble() * -1));
             // Climber.leftArm.setControl(new DutyCycleOut(Constants.Climber.speed));
