@@ -53,6 +53,7 @@ public class RobotContainer {
         private final JoystickButton opAmpShoot = new JoystickButton(operator, PS4Controller.Button.kSquare.value);
         private final JoystickButton opSideShoot = new JoystickButton(operator, PS4Controller.Button.kCircle.value);
         private final JoystickButton opClimbUp = new JoystickButton(operator, PS4Controller.Button.kR1.value);
+        private final JoystickButton opClimbDown = new JoystickButton(operator, PS4Controller.Button.kL1.value);
 
         /* Subsystems */
         private final Swerve s_Swerve = new Swerve();
@@ -84,7 +85,8 @@ public class RobotContainer {
                                 new runClimber(c_Climber,
                                                 () -> driver.getRawAxis(climberUp),
                                                 () -> driver.getRawAxis(climberDown),
-                                                () -> opClimbUp.getAsBoolean()));
+                                                () -> opClimbUp.getAsBoolean(),
+                                                () -> opClimbDown.getAsBoolean()));
 
                 s_Status.setDefaultCommand(
                                 new noteDetect(s_Status,
