@@ -22,6 +22,7 @@ public class StatusLED extends SubsystemBase {
     leds = new AddressableLED(Constants.StatusLED.leds);
     ledsBuffer = new AddressableLEDBuffer(60);
     leds.setLength(ledsBuffer.getLength());
+    leds.start();
     detectNote = new DigitalInput(Constants.StatusLED.detectNote);
   }
 
