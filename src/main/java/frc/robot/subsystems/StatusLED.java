@@ -16,7 +16,6 @@ public class StatusLED extends SubsystemBase {
   public static AddressableLEDBuffer ledsBuffer;
   public static DigitalInput detectNote;
 
-
   /** Creates a new StatusLED. */
   public StatusLED() {
     leds = new AddressableLED(Constants.StatusLED.leds);
