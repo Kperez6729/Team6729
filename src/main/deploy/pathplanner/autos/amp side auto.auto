@@ -43,6 +43,12 @@
               {
                 "type": "named",
                 "data": {
+                  "name": "Auto Align"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
                   "name": "side shoot"
                 }
               },

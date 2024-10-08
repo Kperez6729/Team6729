@@ -25,8 +25,8 @@ public class stopShoot extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.leftWheel.setControl(new DutyCycleOut(0));
-    Shooter.rightWheel.setControl(new DutyCycleOut(0));
+    Shooter.topWheel.setControl(new DutyCycleOut(0));
+    Shooter.bottomWheel.setControl(new DutyCycleOut(0));
     Index.leftSide.set(0);
     Index.rightSide.set(0);
     Intake.topRoller.set(ControlMode.PercentOutput, 0);

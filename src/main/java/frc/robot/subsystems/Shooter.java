@@ -5,11 +5,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
-  public static TalonFX leftWheel;
-  public static TalonFX rightWheel;
+  public static TalonFX bottomWheel;
+  public static TalonFX topWheel;
 
   public Shooter() {
-    leftWheel = new TalonFX(Constants.Shooter.leftWheel);
-    rightWheel = new TalonFX(Constants.Shooter.rightWheel);
+    topWheel = new TalonFX(Constants.Shooter.leftWheel);
+    bottomWheel = new TalonFX(Constants.Shooter.rightWheel);
   }
 }

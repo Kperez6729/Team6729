@@ -174,9 +174,10 @@ public final class Constants {
   public static final class Shooter {
     public static final int leftWheel = 18;
     public static final int rightWheel = 19;
-    public static final double speed = 0.75;
-    public static final double sideSpeed = 1.0;
-    public static final double ampSpeed = .25;
+    public static final double speed = 0.60;
+    public static final double sideSpeed = .45;
+    public static final double ampSpeed = .19;
+    public static final double ampSpeed1 = .06;
   }
 
   /* Climber motor IDs, throughbore encoder, and power value */
@@ -198,5 +199,9 @@ public final class Constants {
     public static final int topShooter = 24;
     public static final int bottomShooter = 26;
     public static final double speed = 0.30;
+  }
+  /* limelight */
+  public static final class vision {
+    
   }
 }

@@ -70,6 +70,7 @@ public class RobotContainer {
   private final Climber c_Climber = new Climber();
   private final StatusLED s_Status = new StatusLED();
   private final MobileMiniShooter m_MMS = new MobileMiniShooter();
+  private final limelight l_Limelight = new limelight();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -77,9 +78,10 @@ public class RobotContainer {
         new TeleopSwerve(
             s_Swerve,
             () -> -driver.getRawAxis(translationAxis),
-            () -> -driver.getRawAxis(strafeAxis),
-            () -> -driver.getRawAxis(rotationAxis),
+            () -> -driver.getRawAxis(strafeAxis) ,
+            () -> -driver.getRawAxis(rotationAxis) ,
             () -> robotCentric.getAsBoolean()));
+    
     i_Intake.setDefaultCommand(
         new runIntake(
             i_Intake, i_Index, () -> inIntake.getAsBoolean(), () -> outIntake.getAsBoolean()));
@@ -99,7 +101,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Intake", new upIntake(i_Intake));
     NamedCommands.registerCommand("stop Intake", new stopIntake(i_Intake));
     NamedCommands.registerCommand("Stop shoot", new stopShoot(s_Shooter, i_Index, i_Intake));
-
+    NamedCommands.registerCommand("Auto Align", new autoAlign(s_Swerve));
     // Configure the button bindings
     configureButtonBindings();
     autoChooser = AutoBuilder.buildAutoChooser();

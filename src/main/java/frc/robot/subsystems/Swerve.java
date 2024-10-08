@@ -50,6 +50,7 @@ public class Swerve extends SubsystemBase {
         this::getCurrentSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
         this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE
         // ChassisSpeeds
+        
         new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in
             // your
             // Constants class
@@ -72,6 +73,7 @@ public class Swerve extends SubsystemBase {
           }
           return false;
         },
+        
         this // Reference to this subsystem to set requirements
         );
   }
@@ -161,6 +163,7 @@ public class Swerve extends SubsystemBase {
       mod.resetToAbsolute();
     }
   }
+  
 
   @Override
   public void periodic() {

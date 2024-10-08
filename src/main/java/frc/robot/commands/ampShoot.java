@@ -26,8 +26,8 @@ public class ampShoot extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.leftWheel.setControl(new DutyCycleOut(-Constants.Shooter.ampSpeed));
-    Shooter.rightWheel.setControl(new DutyCycleOut(Constants.Shooter.ampSpeed));
+    Shooter.topWheel.setControl(new DutyCycleOut(-Constants.Shooter.ampSpeed));
+    Shooter.bottomWheel.setControl(new DutyCycleOut(-Constants.Shooter.ampSpeed1));
     MobileMiniShooter.topShooter.set(ControlMode.PercentOutput, -Constants.MMS.speed);
     MobileMiniShooter.bottomShooter.set(ControlMode.PercentOutput, (-Constants.MMS.speed * 2.0));
   }
@@ -35,8 +35,8 @@ public class ampShoot extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Shooter.leftWheel.setControl(new DutyCycleOut(0));
-    Shooter.rightWheel.setControl(new DutyCycleOut(0));
+    Shooter.topWheel.setControl(new DutyCycleOut(0));
+    Shooter.bottomWheel.setControl(new DutyCycleOut(0));
     MobileMiniShooter.topShooter.set(ControlMode.PercentOutput, 0);
     MobileMiniShooter.bottomShooter.set(ControlMode.PercentOutput, 0);
   }

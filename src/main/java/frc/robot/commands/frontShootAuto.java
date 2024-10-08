@@ -27,8 +27,8 @@ public class frontShootAuto extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.leftWheel.setControl(new DutyCycleOut(-Constants.Shooter.speed));
-    Shooter.rightWheel.setControl(new DutyCycleOut(Constants.Shooter.speed));
+    Shooter.topWheel.setControl(new DutyCycleOut(-Constants.Shooter.speed));
+    Shooter.bottomWheel.setControl(new DutyCycleOut(-Constants.Shooter.speed));
     Index.leftSide.set(-Constants.Indexer.shootSpeed);
     Index.rightSide.set(Constants.Indexer.shootSpeed);
     Intake.topRoller.set(ControlMode.PercentOutput, Constants.Intake.speed);
@@ -38,8 +38,8 @@ public class frontShootAuto extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Shooter.leftWheel.setControl(new DutyCycleOut(0));
-    Shooter.rightWheel.setControl(new DutyCycleOut(0));
+    Shooter.topWheel.setControl(new DutyCycleOut(0));
+    Shooter.bottomWheel.setControl(new DutyCycleOut(0));
     Index.leftSide.set(0);
     Index.rightSide.set(0);
     Intake.topRoller.set(ControlMode.PercentOutput, 0);
