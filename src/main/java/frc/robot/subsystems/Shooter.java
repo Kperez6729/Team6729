@@ -9,7 +9,7 @@ public class Shooter extends SubsystemBase {
   public static TalonFX topWheel;
 
   public Shooter() {
-    topWheel = new TalonFX(Constants.Shooter.leftWheel);
-    bottomWheel = new TalonFX(Constants.Shooter.rightWheel);
+    bottomWheel = new TalonFX(Constants.Shooter.leftWheel);
+    topWheel = new TalonFX(Constants.Shooter.rightWheel);
   }
 }

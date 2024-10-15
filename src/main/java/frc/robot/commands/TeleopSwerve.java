@@ -5,6 +5,8 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.subsystems.Swerve;
+import frc.robot.subsystems.limelight;
+
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
 
@@ -41,13 +43,16 @@ public class TeleopSwerve extends Command {
     double rotationVal = MathUtil.applyDeadband(rotationSup.getAsDouble(), Constants.stickDeadband);
     
     /* Drive */
-    
-    
+         if ((limelight.ID == 4.0 || limelight.ID == 7.0) && Math.abs(translationVal) < .1 && Math.abs(strafeVal) < .1 && Math.abs(rotationVal) < .1 && Math.abs(limelight.x) > 2) {
+          s_Swerve.drive(
+            new Translation2d(0,0), limelight.x *-.02, true, false);
+         }                      
+         else{
       s_Swerve.drive(
         new Translation2d(translationVal, strafeVal)
             .times(Constants.Swerve.maxSpeed * runIntake.slowDrive),
         rotationVal * Constants.Swerve.maxAngularVelocity * runIntake.slowRotate,
         !robotCentricSup.getAsBoolean(),
-        true);
-    }
+        false);
+    }}
 }

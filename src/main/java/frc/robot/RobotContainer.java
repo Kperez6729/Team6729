@@ -29,15 +29,15 @@ public class RobotContainer {
   private final Joystick operator = new Joystick(1);
 
   /* Drive Controls */
-  private final int translationAxis = XboxController.Axis.kLeftY.value;
-  private final int strafeAxis = XboxController.Axis.kLeftX.value;
-  private final int rotationAxis = XboxController.Axis.kRightX.value;
+  private final int translationAxis = PS4Controller.Axis.kLeftY.value;
+  private final int strafeAxis = PS4Controller.Axis.kLeftX.value;
+  private final int rotationAxis = PS4Controller.Axis.kRightX.value;
 
   /* Driver Buttons */
   private final int climberDown = XboxController.Axis.kLeftTrigger.value;
   private final int climberUp = XboxController.Axis.kRightTrigger.value;
   private final JoystickButton zeroGyro =
-      new JoystickButton(driver, XboxController.Button.kStart.value);
+      new JoystickButton(driver, PS4Controller.Button.kOptions.value);
   private final JoystickButton robotCentric =
       new JoystickButton(driver, XboxController.Button.kRightStick.value);
   private final JoystickButton shoot = new JoystickButton(driver, XboxController.Button.kY.value);
@@ -97,11 +97,16 @@ public class RobotContainer {
     s_Status.setDefaultCommand(new noteDetect(s_Status, () -> StatusLED.detectNote.get()));
 
     NamedCommands.registerCommand("side shoot", new sideShootAuto(s_Shooter, i_Index, i_Intake));
-    NamedCommands.registerCommand("front shoot", new frontShootAuto(s_Shooter, i_Index, i_Intake));
+    NamedCommands.registerCommand("front ", new frontShootAuto(s_Shooter, i_Index, i_Intake));
     NamedCommands.registerCommand("Intake", new upIntake(i_Intake));
     NamedCommands.registerCommand("stop Intake", new stopIntake(i_Intake));
     NamedCommands.registerCommand("Stop shoot", new stopShoot(s_Shooter, i_Index, i_Intake));
-    NamedCommands.registerCommand("Auto Align", new autoAlign(s_Swerve));
+    NamedCommands.registerCommand("Auto Align", new AutoSwerve(s_Swerve));
+    NamedCommands.registerCommand("front Shoot", new frontShoot(s_Shooter)
+            .alongWith(
+                new SequentialCommandGroup(
+                    Commands.waitSeconds(0.5), new frontIndex(i_Index, i_Intake))));;
+    NamedCommands.registerCommand("frontIndex", new frontIndex(i_Index, i_Intake));
     // Configure the button bindings
     configureButtonBindings();
     autoChooser = AutoBuilder.buildAutoChooser();
