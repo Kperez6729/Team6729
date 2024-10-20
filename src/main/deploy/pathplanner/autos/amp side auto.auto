@@ -18,13 +18,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "side shoot"
+                  "name": "front Shoot"
                 }
               },
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.5
+                  "waitTime": 0.5
                 }
               }
             ]
@@ -37,7 +37,7 @@
           }
         },
         {
-          "type": "race",
+          "type": "sequential",
           "data": {
             "commands": [
               {
@@ -47,15 +47,22 @@
                 }
               },
               {
-                "type": "named",
+                "type": "race",
                 "data": {
-                  "name": "side shoot"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 1.5
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "front Shoot"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -68,19 +75,32 @@
           }
         },
         {
-          "type": "race",
+          "type": "sequential",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "side shoot"
+                  "name": "Auto Align"
                 }
               },
               {
-                "type": "wait",
+                "type": "race",
                 "data": {
-                  "waitTime": 1.5
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "front Shoot"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    }
+                  ]
                 }
               }
             ]

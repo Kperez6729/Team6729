@@ -18,13 +18,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "side shoot"
+                  "name": "front Shoot"
                 }
               },
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 1.0
+                  "waitTime": 0.5
                 }
               }
             ]

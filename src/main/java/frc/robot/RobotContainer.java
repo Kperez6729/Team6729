@@ -29,18 +29,19 @@ public class RobotContainer {
   private final Joystick operator = new Joystick(1);
 
   /* Drive Controls */
-  private final int translationAxis = PS4Controller.Axis.kLeftY.value;
-  private final int strafeAxis = PS4Controller.Axis.kLeftX.value;
-  private final int rotationAxis = PS4Controller.Axis.kRightX.value;
+  private final int translationAxis = XboxController.Axis.kLeftY.value;
+  private final int strafeAxis = XboxController.Axis.kLeftX.value;
+  private final int rotationAxis = XboxController.Axis.kRightX.value;
 
   /* Driver Buttons */
   private final int climberDown = XboxController.Axis.kLeftTrigger.value;
   private final int climberUp = XboxController.Axis.kRightTrigger.value;
   private final JoystickButton zeroGyro =
-      new JoystickButton(driver, PS4Controller.Button.kOptions.value);
+      new JoystickButton(driver, XboxController.Button.kStart.value);
   private final JoystickButton robotCentric =
       new JoystickButton(driver, XboxController.Button.kRightStick.value);
-  private final JoystickButton shoot = new JoystickButton(driver, XboxController.Button.kY.value);
+  private final JoystickButton shoot = 
+      new JoystickButton(driver, XboxController.Button.kY.value);
   private final JoystickButton ampShoot =
       new JoystickButton(driver, XboxController.Button.kB.value);
   private final JoystickButton sideShooter =

@@ -18,7 +18,7 @@ import java.util.function.DoubleSupplier;
 public class AutoSwerve extends Command {
   private Swerve s_Swerve;
     double ts;
-    double td;
+    public static double ty;
   public AutoSwerve(
     Swerve s_Swerve
     
@@ -36,33 +36,47 @@ public class AutoSwerve extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double td = limelight.d - 90;
-    double ts = limelight.s -4;
+
     
         /* Get Values, Deadband */
    
-    /* Drive */
-         if ((limelight.ID == 4.0 || limelight.ID == 7.0) && (Math.abs(limelight.x) > 2  || Math.abs(ts) >2)) {
+    /* Drive */ // change 4 and 7 before a real match
+         if ((limelight.ID == 4.0|| limelight.ID == 7.0 )  && (Math.abs(limelight.x) > 1   || Math.abs(limelight.by) > .5 || limelight.bs !=0)) {
+               
+        
+               
           s_Swerve.drive(
-            new Translation2d(0,-ts*.01), limelight.x *-.02, false, false);
+            new Translation2d(limelight.by,0)
+            .times(Constants.Swerve.maxSpeed * .025), 
+            -limelight.x  *.1, 
+            false, 
+            true);
          } 
          else {
           s_Swerve.drive(
-            new Translation2d(0,0),0, true, false);}
+            new Translation2d(0,0),
+            false, 
+            true);}
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    s_Swerve.drive(
+            new Translation2d(0,0),
+            0, 
+            false, 
+            true);
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (Math.abs(limelight.x) > 2 || Math.abs(ts)>2 || s_Swerve.mSwerveMods[0].getState().speedMetersPerSecond != 0){
+    if (Math.abs(limelight.x) > 1 || Math.abs(limelight.by) > .2    || s_Swerve.mSwerveMods[0].getState().speedMetersPerSecond != 0){
       return false;
     
     }
- 
+    
     else{
       return true;
     }

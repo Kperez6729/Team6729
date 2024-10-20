@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.commands.AutoSwerve;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -17,8 +18,8 @@ public class limelight extends  SubsystemBase {
  public static double s;
  public static double d;
  public static double ID;
- 
- 
+ public static double by;
+ public static double bs;
 
     public limelight() {
      
@@ -46,6 +47,10 @@ public class limelight extends  SubsystemBase {
      double angletoGoalRadians= angletoGoalDegrees * (3.14159/180);
      double distanceFromLimelighttoGoalInches = (GoalHeightInches-limelightLensHeightInches)/Math.tan(angletoGoalRadians);
      double d = distanceFromLimelighttoGoalInches;
+      by = y - 10.3;
+      if (s <= 85.75 && s >= 85.25) bs = 0;
+      else if (s>=85.75 || s<= 50) bs =-5;
+      else if (s< 85.25 && s> 50) bs =5;  
 
    // double x = -.0038633677 * d;
    // double constant = .6809971663;
@@ -61,6 +66,8 @@ public class limelight extends  SubsystemBase {
     SmartDashboard.putNumber("LimelightS", s);
     SmartDashboard.putNumber("distance Frome Apriltag", distanceFromLimelighttoGoalInches);
     SmartDashboard.putNumber("td", d-90);
+    SmartDashboard.putNumber("ty", by);
+    SmartDashboard.putNumber("bs", bs);
     
     }
 }

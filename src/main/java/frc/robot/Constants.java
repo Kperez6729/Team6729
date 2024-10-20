@@ -176,8 +176,8 @@ public final class Constants {
     public static final int rightWheel = 19;
     public static final double speed = 0.60;
     public static final double sideSpeed = .45;
-    public static final double ampSpeed = .19;
-    public static final double ampSpeed1 = .06;
+    public static final double ampSpeed = .03;
+    public static final double ampSpeed1 = .17;
   }
 
   /* Climber motor IDs, throughbore encoder, and power value */
