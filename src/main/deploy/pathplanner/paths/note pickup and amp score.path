@@ -32,18 +32,18 @@
     },
     {
       "anchor": {
-        "x": 3.8939232082399773,
-        "y": 7.240041385270605
+        "x": 4.217008219347387,
+        "y": 7.225355702947542
       },
       "prevControl": {
-        "x": 4.052107371610351,
-        "y": 7.066853592562283
+        "x": 4.375192382717762,
+        "y": 7.05216791023922
       },
       "nextControl": {
-        "x": 3.7357390448696037,
-        "y": 7.413229177978928
+        "x": 4.058824055977014,
+        "y": 7.398543495655865
       },
-      "isLocked": true,
+      "isLocked": false,
       "linkedName": null
     },
     {
@@ -90,89 +90,6 @@
               "type": "named",
               "data": {
                 "name": "Intake"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 2.9,
-      "command": {
-        "type": "sequential",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "arm Extend"
-              }
-            },
-            {
-              "type": "wait",
-              "data": {
-                "waitTime": 0.5
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "amp Shoot"
-              }
-            },
-            {
-              "type": "wait",
-              "data": {
-                "waitTime": 0.5
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "Stop Cimber"
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "stop Intake"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0,
-      "command": {
-        "type": "sequential",
-        "data": {
-          "commands": [
-            {
-              "type": "parallel",
-              "data": {
-                "commands": [
-                  {
-                    "type": "named",
-                    "data": {
-                      "name": "side shoot"
-                    }
-                  },
-                  {
-                    "type": "wait",
-                    "data": {
-                      "waitTime": 0.5
-                    }
-                  }
-                ]
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "Stop shoot"
               }
             }
           ]

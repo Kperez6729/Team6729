@@ -53,6 +53,6 @@ public class TeleopSwerve extends Command {
             .times(Constants.Swerve.maxSpeed * runIntake.slowDrive),
         rotationVal * Constants.Swerve.maxAngularVelocity * runIntake.slowRotate,
         !robotCentricSup.getAsBoolean(),
-        false);
+        true);
     }}
 }

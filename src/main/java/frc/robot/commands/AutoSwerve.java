@@ -55,6 +55,7 @@ public class AutoSwerve extends Command {
          else {
           s_Swerve.drive(
             new Translation2d(0,0),
+            0, 
             false, 
             true);}
   }
@@ -72,7 +73,7 @@ public class AutoSwerve extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (Math.abs(limelight.x) > 1 || Math.abs(limelight.by) > .2    || s_Swerve.mSwerveMods[0].getState().speedMetersPerSecond != 0){
+    if (Math.abs(limelight.x) > 1 || Math.abs(limelight.by) > .5    || s_Swerve.mSwerveMods[0].getState().speedMetersPerSecond != 0){
       return false;
     
     }

@@ -41,7 +41,7 @@ public class RobotContainer {
   private final JoystickButton robotCentric =
       new JoystickButton(driver, XboxController.Button.kRightStick.value);
   private final JoystickButton shoot = 
-      new JoystickButton(driver, XboxController.Button.kY.value);
+    new JoystickButton(driver, XboxController.Button.kY.value);
   private final JoystickButton ampShoot =
       new JoystickButton(driver, XboxController.Button.kB.value);
   private final JoystickButton sideShooter =
