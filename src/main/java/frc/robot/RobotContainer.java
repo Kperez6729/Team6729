@@ -85,7 +85,10 @@ public class RobotContainer {
     
     i_Intake.setDefaultCommand(
         new runIntake(
-            i_Intake, i_Index, () -> inIntake.getAsBoolean(), () -> outIntake.getAsBoolean()));
+            i_Intake, 
+            i_Index, 
+            () -> inIntake.getAsBoolean(), 
+            () -> outIntake.getAsBoolean()));
 
     c_Climber.setDefaultCommand(
         new runClimber(
