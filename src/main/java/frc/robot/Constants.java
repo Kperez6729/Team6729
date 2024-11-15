@@ -3,6 +3,8 @@ package frc.robot;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
+
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -204,4 +206,34 @@ public final class Constants {
   public static final class vision {
     
   }
+   public class Pose {
+        public static final int pigeonID = 1;
+
+        public static final Rotation2d blueDumpAngle = new Rotation2d(Units.degreesToRadians(-38.0));
+        public static final Rotation2d redDumpAngle = new Rotation2d(Units.degreesToRadians(-142.0));
+        public static final double maxDumpError = 1.5; // degrees
+        public static final Rotation2d blueSlideAngle = new Rotation2d(Units.degreesToRadians(0.0));
+        public static final Rotation2d redSlideAngle = new Rotation2d(Units.degreesToRadians(180.0));
+        public static final double maxSlideError = 2.0; // degrees
+        public static final double maxShuttleError = 1.5; // degrees
+        public static final PIDController rotationPID = new PIDController(0.0070, 0.000, 0.0); // kI was 0.050 for NCCMP
+        public static final PIDController maintainPID = new PIDController(0.0040, 0.000, 0.0);
+        public static final double rotationKS = 0.015;
+        public static final double rotationIZone = 2.5; // degrees
+
+        public static final Translation2d blueSpeakerLocation = new Translation2d(0.0, 5.548);
+        public static final Translation2d redSpeakerLocation = new Translation2d(16.579, 5.548);
+        public static final Translation2d blueShuttleLocation = new Translation2d(1.25, 6.7);
+        public static final Translation2d redShuttleLocation = new Translation2d(15.25, 6.7);
+        public static final Translation2d blueFarShuttleLocation = new Translation2d(7.5, 7.0);
+        public static final Translation2d redFarShuttleLocation = new Translation2d(9.1, 7.0);
+        public static final Translation2d blueAmpLocation = new Translation2d(1.84, 8.2);
+        public static final Translation2d redAmpLocation = new Translation2d(14.7, 8.2);
+        public static final double fieldLength = 16.54;
+        public static final double zoneMiddleStart = 5.3;
+        public static final double zoneSpeakerEnd = 5.8;
+        public static final double zoneSourceStart = 11.5;
+        public static final double zoneMiddleEnd = 12.5;
+    }
+
 }
